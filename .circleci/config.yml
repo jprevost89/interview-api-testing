@@ -31,5 +31,5 @@ test:
     - mocha 
 
 store_test_results:
-    path: test-results/mocha
+    path: test-results
     
