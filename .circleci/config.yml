@@ -1,27 +1,7 @@
-##### Chapter 5 ##### 
-### btree 
-store_test_results:
-    path: test-results
-    
-jobs:
-  build:
-    dockerhub:
-      branch: master
-      commands:
-        - $DOCKER_HUB_TRIGGER
-    steps:
-      - checkout
-      - run: echo "this is the build job"
-  test:
-    override:
-      - mocha
-    steps:
-      - checkout
-      - run: echo "this is the test job"
-
-# Orchestrate our job run sequence
+version: 2.1
+orbs:
+    hello: circleci/hello-build@0.0.5
 workflows:
-  build_and_test:
-    jobs:
-      - build
-      - test
+    "Hello Workflow":
+        jobs:
+          - hello/hello-build
