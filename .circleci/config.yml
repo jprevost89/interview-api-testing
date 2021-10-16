@@ -29,4 +29,7 @@ deployment:
 test:
   override:   
     - mocha 
+
+store_test_results:
+    path: test-results
     
