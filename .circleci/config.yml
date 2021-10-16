@@ -1,27 +1,19 @@
-##### Chapter 5 ##### 
-### btree 
-store_test_results:
-    path: test-results
-    
+version: 2.1
+executors:
+  my-custom-executor:
+    docker:
+      - image: cimg/base:stable
+      
 jobs:
-  build:
-    dockerhub:
-      branch: master
-      commands:
-        - $DOCKER_HUB_TRIGGER
-    steps:
-      - checkout
-      - run: echo "this is the build job"
-  test:
-    override:
-      - mocha
-    steps:
-      - checkout
-      - run: echo "this is the test job"
+  my-job-name:
 
-# Orchestrate our job run sequence
+    executor: my-custom-executor
+    steps:
+      - checkout
+      - run: |
+          # echo Hello, World!
+
 workflows:
-  build_and_test:
+  my-custom-workflow:
     jobs:
-      - build
-      - test
+      - my-job-name
